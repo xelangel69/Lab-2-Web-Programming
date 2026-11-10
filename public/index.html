@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа №2</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-width: 320px;
+            color: #20242b;
+            background-color: #f2f4f7;
+            font-family: Arial, sans-serif;
+        }
+
+        #page-header {
+            padding: 16px 24px;
+            color: white;
+            background-color: #111111;
+            font-family: Georgia, serif;
+            font-size: 18px;
+        }
+
+        .header-content {
+            display: flex;
+            max-width: 1040px;
+            margin: 0 auto;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .header-content > img {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .header-title {
+            margin: 0 0 4px;
+            font-size: 21px;
+        }
+
+        .student-info {
+            margin: 0;
+            color: #dddddd;
+            font-size: 15px;
+        }
+
+        .content {
+            width: 1040px;
+            max-width: calc(100% - 32px);
+            margin: 28px auto;
+        }
+
+        .card {
+            padding: 24px;
+            border: 1px solid #d8dde3;
+            border-radius: 12px;
+            background-color: white;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+        }
+
+        .work-area {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
+            gap: 36px;
+            align-items: center;
+        }
+
+        .graph-block {
+            text-align: center;
+        }
+
+        #plot {
+            display: block;
+            width: 100%;
+            max-width: 430px;
+            height: auto;
+            margin: 0 auto;
+            border: 1px solid #d2d7dc;
+            border-radius: 8px;
+            background-color: #ffffff;
+        }
+
+        .form-block > h1 {
+            margin: 0 0 6px;
+            font-size: 26px;
+        }
+
+        .field {
+            margin: 0 0 18px;
+        }
+
+        .field > label,
+        .field > legend {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #aeb5bd;
+            border-radius: 6px;
+            color: inherit;
+            background-color: white;
+            font: inherit;
+        }
+
+        input[type="text"]:focus,
+        select:focus {
+            outline: 2px solid #ff174f;
+            outline-offset: 1px;
+            border-color: #ff174f;
+        }
+
+        fieldset.field {
+            padding: 0;
+            border: 0;
+        }
+
+        .radius-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .radius-options > label {
+            padding: 8px 11px;
+            border: 1px solid #cbd0d6;
+            border-radius: 6px;
+            background-color: #f7f8fa;
+            cursor: pointer;
+        }
+
+        .radius-options > label:hover {
+            border-color: #ff174f;
+        }
+
+        input[type="checkbox"] {
+            accent-color: #ff174f;
+        }
+
+        #errors {
+            min-height: 21px;
+            margin: -3px 0 12px;
+            color: #b00020;
+            line-height: 1.4;
+        }
+
+        #errors:not(:empty)::before {
+            content: "Ошибка: ";
+            font-weight: bold;
+        }
+
+        button {
+            padding: 10px 18px;
+            border: 1px solid #d20f40;
+            border-radius: 6px;
+            color: white;
+            background-color: #ff174f;
+            font: inherit;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #d20f40;
+        }
+
+        .results {
+            margin-top: 22px;
+        }
+
+        .results-heading {
+            display: flex;
+            margin-bottom: 16px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .results-heading > h2 {
+            margin: 0;
+            font-size: 23px;
+        }
+
+        #clear-results {
+            padding: 8px 13px;
+            color: #30343a;
+            background-color: #eeeeee;
+            border-color: #c7cbd0;
+            font-weight: normal;
+        }
+
+        #clear-results:hover {
+            background-color: #dddddd;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 11px 10px;
+            border-bottom: 1px solid #dfe3e7;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        thead > tr {
+            background-color: #f1f3f5;
+        }
+
+        tbody > tr:hover {
+            background-color: #fafbfc;
+        }
+
+        td[data-hit="true"] {
+            color: #17823b;
+            font-weight: bold;
+        }
+
+        td[data-hit="false"] {
+            color: #b00020;
+            font-weight: bold;
+        }
+
+        .empty-row {
+            color: #7a828c;
+        }
+
+        footer {
+            display: flex;
+            padding: 4px 16px 28px;
+            justify-content: center;
+            gap: 24px;
+            font-size: 14px;
+        }
+
+        footer > a {
+            color: #5b6470;
+        }
+
+        footer > a:hover {
+            color: #ff174f;
+        }
+    </style>
+</head>
+<body>
+    <header id="page-header">
+        <div class="header-content">
+            <img src="piikt-logo.jpg" alt="Логотип ПИИКТ">
+            <div>
+                <p class="header-title">Лабораторная работа №2</p>
+                <p class="student-info">Кириллов Иван Александрович · Р3107 · Вариант №12619</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="content">
+        <section class="card work-area">
+            <div class="graph-block">
+                <svg id="plot" viewBox="0 0 420 420" role="img" aria-label="Область попадания точки"></svg>
+            </div>
+
+            <form id="point-form" class="form-block" novalidate>
+                <h1>Проверка точки</h1>
+
+                <div class="field">
+                    <label for="x-value">Координата X</label>
+                    <select id="x-value" name="x">
+                        <option value="">Выберите X</option>
+                        <option value="-4">-4</option>
+                        <option value="-3">-3</option>
+                        <option value="-2">-2</option>
+                        <option value="-1">-1</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="y-value">Координата Y</label>
+                    <input id="y-value" name="y" type="text" inputmode="decimal"
+                           autocomplete="off" placeholder="Число от -5 до 5">
+                </div>
+
+                <fieldset class="field">
+                    <legend>Радиусы R</legend>
+                    <div class="radius-options">
+                        <label><input type="checkbox" name="r" value="1"> 1</label>
+                        <label><input type="checkbox" name="r" value="2"> 2</label>
+                        <label><input type="checkbox" name="r" value="3"> 3</label>
+                        <label><input type="checkbox" name="r" value="4"> 4</label>
+                        <label><input type="checkbox" name="r" value="5"> 5</label>
+                    </div>
+                </fieldset>
+
+                <div id="errors" role="alert" aria-live="polite"></div>
+                <button type="submit">Проверить</button>
+            </form>
+        </section>
+
+        <section class="card results">
+            <div class="results-heading">
+                <h2>Результаты</h2>
+                <button id="clear-results" type="button">Очистить историю</button>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>X</th>
+                            <th>Y</th>
+                            <th>R</th>
+                            <th>Результат</th>
+                            <th>Дата и время сервера</th><th>Обработка запроса, мс</th>
+                        </tr>
+                    </thead>
+                    <tbody id="results-body"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <a href="https://github.com/xelangel69/Lab-1-Web-Programming" target="_blank" rel="noopener">GitHub-репозиторий</a>
+        <a href="https://lms.tuxedo.se.ifmo.ru/newdex/program/0/courses/12/structure/chapters/88/modules/131/lessons/184" target="_blank" rel="noopener">LMS Tuxedo</a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

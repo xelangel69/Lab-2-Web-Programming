@@ -1,0 +1,18 @@
+# Adapt paths, ports and module locations to the Helios template.
+ServerRoot "/home/studs/LOGIN/lab2"
+Listen 8080
+ServerName localhost
+PidFile logs/httpd.pid
+ErrorLog logs/error.log
+LogLevel warn
+# Keep the LoadModule directives from the course template, including:
+# LoadModule proxy_module .../mod_proxy.so
+# LoadModule proxy_fcgi_module .../mod_proxy_fcgi.so
+DocumentRoot "/home/studs/LOGIN/lab2/public"
+<Directory "/home/studs/LOGIN/lab2/public">
+    Require all granted
+    Options -Indexes
+    DirectoryIndex index.html
+</Directory>
+ProxyRequests Off
+ProxyPass "/api/check" "fcgi://127.0.0.1:9000/"
