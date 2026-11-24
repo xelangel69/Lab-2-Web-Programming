@@ -1,87 +1,128 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Лабораторная работа №2</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header id="page-header">
-        <div class="header-content">
-            <img src="piikt-logo.jpg" alt="Логотип ПИИКТ">
-            <div>
-                <p class="header-title">Лабораторная работа №2</p>
-                <p class="student-info">Кириллов Иван Александрович · Р3107 · Вариант №722514</p>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Лабораторная работа №2</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <header id="page-header">
+            <div class="header-content">
+                <img src="piikt-logo.jpg" alt="Логотип ПИИКТ" />
+                <div>
+                    <p class="header-title">Лабораторная работа №2</p>
+                    <p class="student-info">
+                        Кириллов Иван Александрович · Р3107 · Вариант №722514
+                    </p>
+                </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <main class="content">
-        <section class="card work-area">
-            <div class="graph-block">
-                <svg id="plot" viewBox="0 0 420 420" role="img" aria-label="Область варианта 722514"></svg><p id="plot-caption"></p>
-            </div>
-
-            <form id="point-form" class="form-block" method="post" action="/fcgi-bin/app.jar" novalidate>
-                <h1>Проверка точки</h1>
-
-                <div class="field">
-                    <label>Координата X</label>
-                    <div class="x-options" role="group" aria-label="Координата X"><button type="button" data-x="-3" aria-pressed="false">-3</button><button type="button" data-x="-2" aria-pressed="false">-2</button><button type="button" data-x="-1" aria-pressed="false">-1</button><button type="button" data-x="0" aria-pressed="false">0</button><button type="button" data-x="1" aria-pressed="false">1</button><button type="button" data-x="2" aria-pressed="false">2</button><button type="button" data-x="3" aria-pressed="false">3</button><button type="button" data-x="4" aria-pressed="false">4</button><button type="button" data-x="5" aria-pressed="false">5</button></div>
+        <main class="content">
+            <section class="card work-area">
+                <div class="graph-block">
+                    <svg
+                        id="plot"
+                        viewBox="0 0 420 420"
+                        role="img"
+                        aria-label="Область варианта 722514"
+                    ></svg>
+                    <p id="plot-caption"></p>
                 </div>
 
-                <div class="field">
-                    <label for="y-value">Координата Y</label>
-                    <input id="y-value" name="y" type="text" inputmode="decimal"
-                           autocomplete="off" placeholder="Число строго между -3 и 3">
-                </div>
+                <form
+                    id="point-form"
+                    class="form-block"
+                    method="post"
+                    action="/fcgi-bin/app.jar"
+                    novalidate
+                >
+                    <h1>Проверка точки</h1>
 
-                <fieldset class="field">
-                    <legend>Радиусы R</legend>
-                    <div class="radius-options">
-                        <label><input type="checkbox" name="r" value="1"> 1</label>
-                        <label><input type="checkbox" name="r" value="2"> 2</label>
-                        <label><input type="checkbox" name="r" value="3"> 3</label>
-                        <label><input type="checkbox" name="r" value="4"> 4</label>
-                        <label><input type="checkbox" name="r" value="5"> 5</label>
+                    <div class="field">
+                        <label>Координата X</label>
+                        <div class="x-options" role="group" aria-label="Координата X">
+                            <button type="button" data-x="-3" aria-pressed="false">-3</button
+                            ><button type="button" data-x="-2" aria-pressed="false">-2</button
+                            ><button type="button" data-x="-1" aria-pressed="false">-1</button
+                            ><button type="button" data-x="0" aria-pressed="false">0</button
+                            ><button type="button" data-x="1" aria-pressed="false">1</button
+                            ><button type="button" data-x="2" aria-pressed="false">2</button
+                            ><button type="button" data-x="3" aria-pressed="false">3</button
+                            ><button type="button" data-x="4" aria-pressed="false">4</button
+                            ><button type="button" data-x="5" aria-pressed="false">5</button>
+                        </div>
                     </div>
-                </fieldset>
 
-                <div id="errors" role="alert" aria-live="polite"></div>
-                <button type="submit">Проверить</button>
-            </form>
-        </section>
+                    <div class="field">
+                        <label for="y-value">Координата Y</label>
+                        <input
+                            id="y-value"
+                            name="y"
+                            type="text"
+                            inputmode="decimal"
+                            autocomplete="off"
+                            placeholder="Число строго между -3 и 3"
+                        />
+                    </div>
 
-        <section class="card results">
-            <div class="results-heading">
-                <h2>Результаты</h2>
-                <button id="clear-results" type="button">Очистить историю</button>
-            </div>
+                    <fieldset class="field">
+                        <legend>Радиусы R</legend>
+                        <div class="radius-options">
+                            <label><input type="checkbox" name="r" value="1" /> 1</label>
+                            <label><input type="checkbox" name="r" value="2" /> 2</label>
+                            <label><input type="checkbox" name="r" value="3" /> 3</label>
+                            <label><input type="checkbox" name="r" value="4" /> 4</label>
+                            <label><input type="checkbox" name="r" value="5" /> 5</label>
+                        </div>
+                    </fieldset>
 
-            <div class="table-wrap">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>X</th>
-                            <th>Y</th>
-                            <th>R</th>
-                            <th>Результат</th>
-                            <th>Время сервера</th><th>Обработка, мс</th>
-                        </tr>
-                    </thead>
-                    <tbody id="results-body"></tbody>
-                </table>
-            </div>
-        </section>
-    </main>
+                    <div id="errors" role="alert" aria-live="polite"></div>
+                    <button type="submit">Проверить</button>
+                </form>
+            </section>
 
-    <footer>
-        <a href="https://github.com/xelangel69/Lab-1-Web-Programming" target="_blank" rel="noopener">GitHub-репозиторий</a>
-        <a href="https://lms.tuxedo.se.ifmo.ru/newdex/program/0/courses/12/structure/chapters/88/modules/131/lessons/184" target="_blank" rel="noopener">LMS Tuxedo</a>
-    </footer>
+            <section class="card results">
+                <div class="results-heading">
+                    <h2>Результаты</h2>
+                    <button id="clear-results" type="button">Очистить историю</button>
+                </div>
 
-    <script src="jquery-3.7.1.min.js"></script>
-    <script src="script.js"></script>
-</body>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>X</th>
+                                <th>Y</th>
+                                <th>R</th>
+                                <th>Результат</th>
+                                <th>Время сервера</th>
+                                <th>Обработка, мс</th>
+                            </tr>
+                        </thead>
+                        <tbody id="results-body"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <a
+                href="https://github.com/xelangel69/Lab-1-Web-Programming"
+                target="_blank"
+                rel="noopener"
+                >GitHub-репозиторий</a
+            >
+            <a
+                href="https://lms.tuxedo.se.ifmo.ru/newdex/program/0/courses/12/structure/chapters/88/modules/131/lessons/184"
+                target="_blank"
+                rel="noopener"
+                >LMS Tuxedo</a
+            >
+        </footer>
+
+        <script src="jquery-3.7.1.min.js"></script>
+        <script src="script.js"></script>
+    </body>
 </html>
