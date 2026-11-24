@@ -119,6 +119,16 @@ fieldset.field {
     border: 0;
 }
 
+.x-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.x-options button[aria-pressed="true"] {
+    background: #20242b;
+}
+
 .radius-options {
     display: flex;
     flex-wrap: wrap;
@@ -166,6 +176,10 @@ button {
 
 button:hover {
     background-color: #d20f40;
+}
+
+button:disabled {
+    opacity: 0.5;
 }
 
 .results {
@@ -252,17 +266,6 @@ footer > a:hover {
     color: #ff174f;
 }
 
-.x-options {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-}
-.x-options button[aria-pressed="true"] {
-    background: #20242b;
-}
-button:disabled {
-    opacity: 0.5;
-}
 @media (max-width: 720px) {
     .work-area {
         grid-template-columns: 1fr;
