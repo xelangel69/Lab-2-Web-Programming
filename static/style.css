@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Лабораторная работа №2</title>
-    <style>
+
         * {
             box-sizing: border-box;
         }
@@ -258,94 +252,5 @@
         footer > a:hover {
             color: #ff174f;
         }
-    </style>
-</head>
-<body>
-    <header id="page-header">
-        <div class="header-content">
-            <img src="piikt-logo.jpg" alt="Логотип ПИИКТ">
-            <div>
-                <p class="header-title">Лабораторная работа №2</p>
-                <p class="student-info">Кириллов Иван Александрович · Р3107 · Вариант №12619</p>
-            </div>
-        </div>
-    </header>
-
-    <main class="content">
-        <section class="card work-area">
-            <div class="graph-block">
-                <svg id="plot" viewBox="0 0 420 420" role="img" aria-label="Область попадания точки"></svg>
-            </div>
-
-            <form id="point-form" class="form-block" novalidate>
-                <h1>Проверка точки</h1>
-
-                <div class="field">
-                    <label for="x-value">Координата X</label>
-                    <select id="x-value" name="x">
-                        <option value="">Выберите X</option>
-                        <option value="-4">-4</option>
-                        <option value="-3">-3</option>
-                        <option value="-2">-2</option>
-                        <option value="-1">-1</option>
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select>
-                </div>
-
-                <div class="field">
-                    <label for="y-value">Координата Y</label>
-                    <input id="y-value" name="y" type="text" inputmode="decimal"
-                           autocomplete="off" placeholder="Число от -5 до 5">
-                </div>
-
-                <fieldset class="field">
-                    <legend>Радиусы R</legend>
-                    <div class="radius-options">
-                        <label><input type="checkbox" name="r" value="1"> 1</label>
-                        <label><input type="checkbox" name="r" value="2"> 2</label>
-                        <label><input type="checkbox" name="r" value="3"> 3</label>
-                        <label><input type="checkbox" name="r" value="4"> 4</label>
-                        <label><input type="checkbox" name="r" value="5"> 5</label>
-                    </div>
-                </fieldset>
-
-                <div id="errors" role="alert" aria-live="polite"></div>
-                <button type="submit">Проверить</button>
-            </form>
-        </section>
-
-        <section class="card results">
-            <div class="results-heading">
-                <h2>Результаты</h2>
-                <button id="clear-results" type="button">Очистить историю</button>
-            </div>
-
-            <div class="table-wrap">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>X</th>
-                            <th>Y</th>
-                            <th>R</th>
-                            <th>Результат</th>
-                            <th>Дата и время сервера</th><th>Обработка запроса, мс</th>
-                        </tr>
-                    </thead>
-                    <tbody id="results-body"></tbody>
-                </table>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <a href="https://github.com/xelangel69/Lab-1-Web-Programming" target="_blank" rel="noopener">GitHub-репозиторий</a>
-        <a href="https://lms.tuxedo.se.ifmo.ru/newdex/program/0/courses/12/structure/chapters/88/modules/131/lessons/184" target="_blank" rel="noopener">LMS Tuxedo</a>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
+    
+.x-options {display:flex;flex-wrap:wrap;gap:5px} .x-options button[aria-pressed="true"]{background:#20242b} button:disabled{opacity:.5} @media(max-width:720px){.work-area{grid-template-columns:1fr}}
